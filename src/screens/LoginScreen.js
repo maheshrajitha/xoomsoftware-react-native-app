@@ -4,7 +4,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
-import { SafeAreaView, View , Keyboard , TouchableWithoutFeedback, Dimensions , Animated , Text} from 'react-native';
+import { SafeAreaView, View , Keyboard , TouchableWithoutFeedback, Dimensions , Animated , Text, Alert} from 'react-native';
 import MainStyleSheet,{dynamicHeight} from '../styles/MainStyleSheet';
 import StyledPrimaryButton from '../components/StyledRoundedButton';
 import StyledLogo from '../components/AppStyledLogo';
@@ -33,12 +33,16 @@ class LoginScreen extends Component{
     emailValueChangeHandler = (emailValue) => { this.email = emailValue;}
     passwordValueChangeHAndler = (passwordValue) => { this.password = passwordValue;}
     loginButtonHandler = () => {
-        userLogin(this.email, this.password).then(async reponseFromLogin => {
-            await this.props.userLogin(reponseFromLogin);
-            this.props.navigation.replace('Appoinment');
-        }).catch(e => {
-            alert('error occured');
-        })
+        if (this.email !== (null || undefined) && this.password !== (null || undefined)) {
+            userLogin(this.email, this.password).then(async reponseFromLogin => {
+                await this.props.userLogin(reponseFromLogin);
+                this.props.navigation.replace('Appoinment');
+            }).catch(e => {
+                alert('error occured');
+            });
+        } else {
+            Alert.alert('Warning', 'Please Fill All The Fields');
+        }
     }
     _isKeyboardShow = () => { this.setState({ isKeyboardShow: true }); this.animateStart();}
     _isNotKeyboardShow = () => { this.setState({ isKeyboardShow: false }); this.opacityAnimation.setValue(0)};

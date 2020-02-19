@@ -33,11 +33,14 @@ class SignupScreen extends Component{
     passwordChangeHandler = passwordValue => this.password = passwordValue;
 
     signupButtonHandler = () => {
-        signup(this.firstName, this.lastName, this.password, this.email).then(response => {
-            this.props.navigation.goBack();
-        }).catch(err => {
-            Alert.alert('Signup Error', err.message);
-        })
+        if (this.password !== (null || undefined) && this.firstName !== (null || undefined) && this.email !== (null || undefined) && this.lastName !== (null || undefined)) {
+            signup(this.firstName, this.lastName, this.password, this.email).then(response => {
+                this.props.navigation.goBack();
+            }).catch(err => {
+                Alert.alert('Signup Error', err.message);
+            })
+        } else
+            Alert.alert('Warning', 'Please Fill All The Fields');
     }
 
     render() {
