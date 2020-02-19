@@ -20,6 +20,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { userReducer } from './src/store/reducers/user.reducer';
 import { appoinmentReducer } from './src/store/reducers/appoinment.reducer';
+import AddAppoinmentScreen from './src/screens/AddAppoinmentScreen';
 
 const store = createStore(combineReducers({ user: userReducer, appoinments: appoinmentReducer }), applyMiddleware(thunk));
 const StackNavigator = createStackNavigator();
@@ -31,7 +32,8 @@ export default function App() {
           <StackNavigator.Screen component={SplashScreen} options={{header : ()=> null}} name={'SplashScreen'}/>
           <StackNavigator.Screen component={LoginScreen} name={'Login'} options={{ header: () => null }} />
           <StackNavigator.Screen component={SignupScreen} name={'Signup'} options={{ header: () => null }} />
-          <StackNavigator.Screen component={AppoinmentScreen} name={'Appoinment'} options={{header : ()=> null}}/>
+          <StackNavigator.Screen component={AppoinmentScreen} name={'Appoinment'} options={{ header: () => null }} />
+          <StackNavigator.Screen component={AddAppoinmentScreen} name={'NewAppoinment'} options={{header:()=> null}}/>
         </StackNavigator.Navigator>
       </NavigationContainer>
     </Provider>

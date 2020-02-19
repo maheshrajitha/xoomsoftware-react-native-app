@@ -30,10 +30,10 @@ class LoginScreen extends Component{
         Keyboard.removeListener('keyboardDidShow');
         Keyboard.removeListener('keyboardDidHide');
     }
-    emailValueChangeHandler = (emailValue) => this.setState({ email: emailValue });
-    passwordValueChangeHAndler = (passwordValue) => this.setState({ password: passwordValue });
+    emailValueChangeHandler = (emailValue) => { this.email = emailValue;}
+    passwordValueChangeHAndler = (passwordValue) => { this.password = passwordValue;}
     loginButtonHandler = () => {
-        userLogin(this.state.email, this.state.password).then(async reponseFromLogin => {
+        userLogin(this.email, this.password).then(async reponseFromLogin => {
             await this.props.userLogin(reponseFromLogin);
             this.props.navigation.replace('Appoinment');
         }).catch(e => {

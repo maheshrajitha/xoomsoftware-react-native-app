@@ -13,12 +13,12 @@ class WelcomeScreen extends React.Component{
         this.logoOpacityAnimation = new Animated.Value(0);
         this.welcomeTextAnimation = new Animated.Value(0);
         this.logoAnimationStart();
-        setTimeout(() => this.props.navigation.replace('Login'), 5000);
+        setTimeout(() => this.props.navigation.replace('Login'), 4000);
     }
     
     logoAnimationStart = () => {
-        Animated.timing(this.logoOpacityAnimation, { toValue: 1, duration: 800 }).start();
-        Animated.timing(this.welcomeTextAnimation, { toValue: 1, duration: 1000 }).start();
+        Animated.timing(this.logoOpacityAnimation, { toValue: 1, duration: 1200 }).start();
+        Animated.timing(this.welcomeTextAnimation, { toValue: 1, duration: 1500 ,delay : 200}).start();
     }
     render() {
         return (
@@ -27,7 +27,7 @@ class WelcomeScreen extends React.Component{
                     <StyledLogo logoTextColor={PRIMARY_COLOR}/>
                 </Animated.View>
                 <Animated.View style={[{opacity : this.welcomeTextAnimation},MainStyleSheet.hight25Container,MainStyleSheet.alignItemsCenter,MainStyleSheet.justifyContentCenter]}>
-                    <Text>Make An Appoinment</Text>
+                    <Text style={[MainStyleSheet.appFontSize,MainStyleSheet.secondaryTextColor]}>Make An Appoinment</Text>
                 </Animated.View>
             </SafeAreaView>
         );

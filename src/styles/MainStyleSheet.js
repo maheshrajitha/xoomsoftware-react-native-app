@@ -2,6 +2,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable prettier/prettier */
 import { StyleSheet, Dimensions } from 'react-native';
+import { APP_FONT_SIZE, PRIMARY_COLOR, SECONDARY_COLOR } from '../constants/Values';
 const MainStyleSheet = StyleSheet.create({
     fullSizeContainer: {
         height: Dimensions.get('screen').height,
@@ -33,6 +34,15 @@ const MainStyleSheet = StyleSheet.create({
     },
     fullWidthContainer: {
         width: Dimensions.get('screen').width
+    },
+    appFontSize: {
+        fontSize: APP_FONT_SIZE
+    },
+    primaryTextColor: {
+        color: PRIMARY_COLOR
+    },
+    secondaryTextColor: {
+        color: SECONDARY_COLOR
     }
 });
 export const dynamicHeight = (style) => {
